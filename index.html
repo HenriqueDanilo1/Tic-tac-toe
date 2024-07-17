@@ -102,3 +102,166 @@ function gg(team){
     </script>
 </body>
 </html>
+/*
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width= , initial-scale= ">
+    <title>Document</title>
+</head>
+<body>
+<style>
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-color: rgb(31, 31, 31);
+}
+.main{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+td{
+    border: 01px solid #fff;
+    width: 100px;
+    height: 100px;
+    color: white;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 50px;
+}
+.painel{
+    color: white;
+    font-size: 50px;
+    text-align: justify;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.invisible{
+    display: none;
+}
+.inv{
+    color: rgb(31, 31, 31 , 0);
+    cursor: default;
+}
+.inv::selection{
+    background-color: rgb(31, 31, 31 , 0);
+}
+.restart{
+    position: absolute;
+    background-color: rgb(255, 230, 0);
+    height: 90px;
+    width: 90px;
+    border-radius: 10px;
+    border: 5px solid black;
+    z-index: 4;
+}
+.table{
+}
+</style>
+    <div class="main">
+        <p class="painel" id="painel">Start game</p>
+        <p class="restart invisible" id="res">Click to restart!</p>
+        <table id="table" class="table">
+            <tr>
+                <td onclick="play(this)" id="1" style="border-top: none;border-left: none;"></td>
+                <td onclick="play(this)" id="2" style="border-top: none;"></td>
+                <td onclick="play(this)" id="3" style="border-top: none;border-right: none;"></td>
+            </tr>
+            <tr>
+                <td onclick="play(this)" id="4" style="border-left: none;"></td>
+                <td onclick="play(this)" id="5"></td>
+                <td onclick="play(this)" id="6" style="border-right: none;"></td>
+            </tr>
+            <tr>
+                <td onclick="play(this)" id="7" style="border-left: none;border-bottom: none;"></td>
+                <td onclick="play(this)" id="8" style="border-bottom: none;"></td>
+                <td onclick="play(this)" id="9" style="border-right: none; border-bottom: none;"></td>
+            </tr>
+        </table>
+        <p class="painel inv" id="painel">Start game</p>
+    </div>
+    <script>
+        let turn = 1
+        let dummy = 0
+        let painel = document.getElementById('painel')
+        let table = document.getElementById('table')
+        let res = document.getElementById('res')
+        let td = document.getElementsByTagName('td')
+        let i = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+        let a = document.getElementById('1')
+        let b = document.getElementById('2')
+        let c = document.getElementById('3')
+        let d = document.getElementById('4')
+        let e = document.getElementById('5')
+        let f = document.getElementById('6')
+        let g = document.getElementById('7')
+        let h = document.getElementById('8')
+        let i = document.getElementById('9')
+
+        function play(me){
+            if(turn == 1){
+                me.innerHTML="X"
+                me.style.color="rgb(0, 255, 136);"
+                turn+=1
+                painel.innerHTML="Its O turn"
+                me.classList.add("X")
+                dummy+=1
+            } else{
+                me.innerHTML="O"
+                turn-=1
+                painel.innerHTML="Its X turn"
+                me.classList.add("O")
+                dummy+=1
+            }
+            me.removeAttribute('onclick')
+            if(
+                (a.classList.contains("O") && b.classList.contains("O") && c.classList.contains("O")) ||
+                (d.classList.contains("O") && e.classList.contains("O") && f.classList.contains("O")) ||
+                (g.classList.contains("O") && h.classList.contains("O") && i.classList.contains("O")) ||
+                (a.classList.contains("O") && e.classList.contains("O") && i.classList.contains("O")) ||
+                (c.classList.contains("O") && e.classList.contains("O") && g.classList.contains("O"))
+            ){gg("O")}
+            if(
+                (a.classList.contains("X") && b.classList.contains("X") && c.classList.contains("X")) ||
+                (d.classList.contains("X") && e.classList.contains("X") && f.classList.contains("X")) ||
+                (g.classList.contains("X") && h.classList.contains("X") && i.classList.contains("X")) ||
+                (a.classList.contains("X") && e.classList.contains("X") && i.classList.contains("X")) ||
+                (c.classList.contains("X") && e.classList.contains("X") && g.classList.contains("X"))
+            ){gg("X")}
+            if(dummy==9){notgg()}
+        }
+
+        function gg(team){
+            table.style.pointerEvents='none'
+            painel.innerHTML=`${team} won!`
+            painel.classList.add(`${team}`)
+            res.classList.remove('invisible')
+            dummy = 0
+            if(team==="O"){
+                painel.style.color="red"
+            } else{
+                painel.style.color=""
+            }
+        }
+
+        function notgg(){
+            table.style.pointerEvents='none'
+            painel.innerHTML=`No one won!`
+            res.classList.remove('invisible')
+            dummy = 0
+        }
+
+        function restart(){
+            td.classList.remove('X')
+            td[i].innerHTML=""
+        }
+    </script>
+</body>
+*/
