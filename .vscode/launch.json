@@ -1,0 +1,18 @@
+{
+    "configurations": [
+        {
+            "type": "delegua",
+            "request": "launch",
+            "name": "Executar arquivo aberto",
+            "program": "${file}",
+            "stopOnEntry": false
+        },
+        {
+            "type": "delegua",
+            "request": "launch",
+            "name": "Executar arquivo aberto",
+            "program": "${file}",
+            "stopOnEntry": false
+        }
+    ]
+}
